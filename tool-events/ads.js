@@ -7,37 +7,37 @@
             url: "https://ah4454476.github.io/parkinsons/",
             title: "Parkinsons Info Website",
             desc: "Click here to learn more about Parkinsons and health details.",
-            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2Nra9BWFbr_BjL8FBsnZ1m1D1wM1jUT7MDC2x6iWyZQ&s=10"
+            image: "https://blogger.googleusercontent.com/img/a/AVvXsEhH9XuUCsjTmxVzgwJPbKWFlEDQMyTFzSI78j5HF9T2_y9jsaUcSsWQSpdNOWL5_4kHfcQlFTYYZb6_YSn_DKF0IQRpODMI7c1ZMR_Pr7tcanJodNzOWlOHzBS7TxFOzcuf3Ergrd2Ph4TtzC7_uLhLieG5BXpMws8xaebT1aRWZoNmPuVUk9bmifNch2w"
         },
         {
             url: "https://ah4454476.github.io/usd/",
-            title: "Prop US Money",
-            desc: "Buy US Prop money for fun and videos.",
-            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStyH--VLdIvzsFQXGZhQu0BXRRbRQylrWzcT8jzah9Ng&s=10"
+            title: "USD Rate Tracker",
+            desc: "Check out the latest updates and details on USD rates.",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo75lu3mN3hiY3muL_wICX5qPQQuDLIjxC8gqGHYJuZA&s=10"
         },
         {
             url: "https://www.youtube.com/",
             title: "Watch Videos on YouTube",
             desc: "Explore trending videos, music, and more online.",
-            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3PmtHx9iq1eo1Gu7zSL2pR7rYpTl6uu0STdXfG3vYPQ&s=10"
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGJH3_ZQvwa5B3NQSWzlxJPW_nlS0eTQtv74M7FtxNAQ&s=10"
         },
         {
             url: "https://www.amazon.com/",
-            title: "Amazon",
-            desc: "Best Online Shopping",
-            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3V6nCvdgnPDDB1daMFutUUyaGUhegEuqME7tFl0cz4Q&s=10"
+            title: "Buy What You Want",
+            desc: "Explore online shopping, products, and more.",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-EY-lND57214mCtVG1cSBew0tV54Z_S10MRhgiDFdKA&s=10"
         }
         /* Mazeed URLs yahan aage add karte jayein... */
     ];
 
-    /* Styling */
+    /* Styling: Bina scroll ke 3 ads ek hi line mein fit karne ke liye */
     const style = document.createElement("style");
     style.textContent = `
         .adsense-banner-wrapper {
             width: 100%;
             max-width: 1000px;
             margin: 20px auto;
-            padding: 15px;
+            padding: 10px;
             box-sizing: border-box;
             font-family: Arial, sans-serif;
             background: #f8fafc;
@@ -51,22 +51,23 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #94a3b8;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             text-align: right;
             display: block;
         }
 
         .adsense-scroll-container {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
+            flex-wrap: nowrap;
+            gap: 6px;
+            overflow-x: hidden;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .adsense-card {
-            flex: 1 1 280px;
-            max-width: 320px;
-            min-width: 250px;
+            flex: 1 1 0;
+            min-width: 0;
             background: #ffffff;
             border: 1px solid #cbd5e1;
             border-radius: 6px;
@@ -93,35 +94,44 @@
 
         .adsense-card img {
             width: 100%;
-            height: 140px;
+            height: 90px;
             object-fit: cover;
             border-bottom: 1px solid #e2e8f0;
         }
 
         .adsense-content {
-            padding: 14px;
+            padding: 8px;
         }
 
         .adsense-title {
             display: block;
-            font-size: 15px;
+            font-size: 12px;
             font-weight: 700;
             color: #1d4ed8;
-            margin-bottom: 6px;
+            margin-bottom: 3px;
             text-decoration: underline;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .adsense-desc {
-            font-size: 12px;
+            font-size: 10px;
             color: #475569;
-            line-height: 1.4;
+            line-height: 1.2;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         @media (max-width: 480px) {
             .adsense-banner-wrapper {
-                margin: 10px 5px;
-                width: auto;
-                padding: 10px;
+                margin: 10px 2px;
+                padding: 6px;
+            }
+            .adsense-content {
+                padding: 6px;
             }
         }
     `;
@@ -154,7 +164,7 @@
         const scrollContainer = document.createElement("div");
         scrollContainer.className = "adsense-scroll-container";
 
-        /* Pehle array ko shuffle karein, phir sirf pehle 3 ads select karein */
+        /* Array shuffle karke sirf pehle 3 random ads select honge */
         const randomizedAds = shuffleArray(adsList).slice(0, 3);
 
         randomizedAds.forEach(item => {
